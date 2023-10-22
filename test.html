@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>기말고사</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		 $(document).ready(function(){
+
+		 $("#aBox").on({
+			 mousemove : function(){
+				 $(this).append("<div class = 'aBall'></div>")
+				 $(".aBall:last").css("left",event.pageX + "px").css("top",event.pageY + "px");
+
+			 },			
+			 mouseleave : function(){
+				 $(".aBall").hide();
+			 },
+
+			 mouseenter : function(){
+				 $(this).css("background", "green");
+			 }
+		});
+					
+
+	});
+
+
+	</script>
+
+
+
+  <style>
+  .aBall{width:10px;height:10px;background:red;border-radius:100%;position:absolute;}
+
+
+  h1{text-align:center;text-shadow:10px 10px 10px #CEFBC9;color:green;}
+  p{text-align:center;}
+  .div1{width:35%;height:300px;border:1px solid gray;border-radius:20px 20px 0px 0px;text-align:center;float:left;margin:5%;}
+  .div2{width:100%;height:300px;border:1px solid gray;border-radius:0px 0px 20px 20px;text-align:center;background-color:#CEFBC9;}
+  b{color:blue;}
+  button{text-align:center;}
+  #oclock{font-weight:bold;margin-top:20%;font-size:1.3rem;}
+
+  </style>
+ </head>
+ <body>
+
+ <header>
+  <h1>2020-1학기 전자상거래 portfolio</h1>
+  <hr>
+ <header>
+
+<section>
+  <div class = "div1">
+  <b>디지털 시계를 만듭니다.</b>
+  <button id="btnStart">시작</button>
+  <button onclick="clearInterval(timerID);">멈춤</button>
+  <div class = "div2">
+  <p id = "oclock" onclick="clearInterval(timerID)">
+  시작 -> 디지털 시계 등장 <br><br>
+  멈춤 -> 디지털 시계 정지
+  </p>
+  </div>
+  </div>
+
+  <div class = "div1">
+  <b>마우스를 움직이며 그림을 그립니다.</b>
+  <div id = "aBox" class = "div2">
+  </div>
+  </div>
+<section>
+
+<footer>
+  <hr>
+  <p>학번: 201918033 이름: 김다예</p>
+<footer>
+
+  <script>
+  var timerID
+  var start = document.getElementById("btnStart");
+  start.addEventListener("click", function(){
+	timerID = setInterval(function(){
+	  var d = new Date();
+
+	  var yyyy = d.getFullYear(); //연도
+	  var mth = d.getMonth() + 1; //월-1
+	  var dd = d.getDate(); //일
+	  var day = d.getDay(); //요일
+
+	  if (day == 0) day ="일";
+	  else if(day == 1) day = "월"; 
+	  else if(day == 2) day = "화"; 
+	  else if(day == 3) day = "수"; 
+	  else if(day == 4) day = "목"; 
+	  else if(day == 5) day = "금"; 
+	  else if(day == 6) day = "토"; 
+
+	  var hh = d.getHours(); //시간
+	  var mm = d.getMinutes(); //분
+	  var ss = d.getSeconds();  //초
+
+	  var oc = document.getElementById("oclock");
+  	  oc.innerHTML = "<p style='text-align:center'>" + yyyy + "년 " + mth + "월 " + dd  + "일 " + "( " +day + "요일 )" + "<br>" + "<p style=' word-spacing:1.3rem;'>" + hh + " 시 " + mm + " 분 " + "<span style='color:red'>" + ss + "</span>" + " 초 " + "</p>" + "</p>";
+
+	  //oc.innerText = hh + "시 " + mm + "분 " + "<span style='color:red'>" + ss + "</span>" + "초 ";
+	  //oc.innerText = hh + "시 " + mm + "분 " + ss  + "초 ";
+
+	  }, 1*1000);
+
+	  });
+
+
+  </script>
+
+
+
+ </body>
+</html>
